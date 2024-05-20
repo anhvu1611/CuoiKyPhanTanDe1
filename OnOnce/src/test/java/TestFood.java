@@ -18,11 +18,22 @@ class TestFood {
 
 
     @Test
-    void testAddFood() {
+    void testAddFood() throws Exception{
         FoodService foodService = new FoodImpl();
-//        assertTrue(foodService.addFood(new Food("F166", APPETIZER, 10, 20000)));
-        assertFalse(foodService.addFood(new Food("F166", APPETIZER, 10, 20000)));
-        assertFalse(foodService.addFood(new Food("166F", APPETIZER, 10, 20000)));
+        assertTrue(foodService.addFood(new Food("F167", APPETIZER, 10, 20000)));
+    }
+
+    @Test
+    void testDoubleAddFood() throws Exception{
+        FoodService foodService = new FoodImpl();
+        assertTrue(foodService.addFood(new Food("F168", APPETIZER, 10, 20000)));
+        assertEquals(false,foodService.addFood(new Food("F168", APPETIZER, 10, 20000)));
+    }
+
+    @Test
+    void testInvalid() throws Exception {
+        FoodService foodService = new FoodImpl();
+        assertFalse(foodService.addFood(new Food("A", APPETIZER, 10, 20000)));
     }
 
 
