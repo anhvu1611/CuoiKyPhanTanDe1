@@ -1,0 +1,32 @@
+Mối quan hệ 1 ----> nhiều
+class Category {
+	@OneToMany(mappedBy = "category")
+	private List<New> news = new ArrayList<>();
+}
+class New {
+	@ManyToOne
+	@JoinColumn(name = category_id)
+	private Category category
+}
+
+
+
+Nhiều ------> nhiều
+class User{
+	@ManyToMany(name = "user_role),
+			joinColumns = @JoinColumn(name = "user_id")
+			inverseJoinColumns = @JoinColimn(name = "role_id"))
+	private List<Role> roles = new Array;
+}
+class Role {
+	@ManyToMany(mappedBy = "roles ")  ---> khai báo ở trênn
+	List<User> users = new Array;
+}
+
+@Enumerated(EnumType.ORDINAL) ->>>>>> so nguyen
+or
+@Enumerated(EnumType.STRING)  ->>>>> String
+    private Type type;
+
+@Inheritance(strategy = InheritanceType.JOINED) --->ke thua join bang
+
